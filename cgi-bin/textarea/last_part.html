@@ -1,0 +1,57 @@
+					</p>
+					</div>
+				</section>
+			</section></div>
+		</div>
+		<script src="../reveal.js/lib/js/headmin.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script type="text/javascript">
+		function initializeReveal() {
+		Reveal.initialize({
+		controls: true,
+		progress: true,
+		slideNumber: true,
+		history: true,
+		keyboard: true,
+		overview: true,
+		center: true,
+		touch: true,
+		loop: false,
+		rtl: false,
+		fragments: true,
+		embedded: false,
+		autoSlide: 0,
+		autoSlideStoppable: true,
+		mouseWheel: true,
+		hideAddressBar: true,
+		previewLinks: false,
+		theme: Reveal.getQueryHash().theme || 'moon',
+		transition: Reveal.getQueryHash().transition || 'default',
+		transitionSpeed: 'default',
+		backgroundTransition: 'zoom',
+		viewDistance: 3,
+		parallaxBackgroundImage: '',
+		parallaxBackgroundSize: '',
+		dependencies: [
+		{
+			src: '../reveal.js/lib/js/classList.js',
+			condition: function () { return !document.body.classList; }
+		},
+		{ src: '../#{revealjsdir}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{
+			src: '../reveal.js/plugin/zoom-js/zoom.js',
+			async: true,
+			condition: function () { return !!document.body.classList; }
+		},
+		{
+			src: '../reveal.js/plugin/notes/notes.js',
+			async: true,
+			condition: function () { return !!document.body.classList; }
+		}
+		]
+		});
+		}
+		initializeReveal();
+		</script>
+	</body>
+</html>

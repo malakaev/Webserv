@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CGI 1</title>
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../reveal.js/css/reveal.css" rel="stylesheet">
+		<link rel="stylesheet" href="../reveal.js/css/theme/moon.css" id="theme">
+		<link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet">
+		<script src="http://getfirebug.com/firebug-lite.js#startOpened=false"></script>
+		<script type="text/javascript">document.write('<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');</script>
+		<link rel="stylesheet" href="../styles/cgi.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+		<section>
+			<section class="first_section" id="" data-transition="" data-transition-speed="" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+				<h2>Entered data 1:</h2>
+				<div>
+					<p class="first_form">
+						First field: none<br>
+						Second field: none<br>
+					</p>
+				</div>
+			</section>
+		</section></div>
+		</div>
+		<script src="../reveal.js/lib/js/headmin.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script type="text/javascript">
+			function initializeReveal() {
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				slideNumber: true,
+				history: true,
+				keyboard: true,
+				overview: true,
+				center: true,
+				touch: true,
+				loop: false,
+				rtl: false,
+				fragments: true,
+				embedded: false,
+				autoSlide: 0,
+				autoSlideStoppable: true,
+				mouseWheel: true,
+				hideAddressBar: true,
+				previewLinks: false,
+				theme: Reveal.getQueryHash().theme || 'moon',
+				transition: Reveal.getQueryHash().transition || 'default',
+				transitionSpeed: 'default',
+				backgroundTransition: 'zoom',
+				viewDistance: 3,
+				parallaxBackgroundImage: '',
+				parallaxBackgroundSize: '',
+				dependencies: [
+				{
+					src: '../reveal.js/lib/js/classList.js',
+					condition: function () { return !document.body.classList; }
+				},
+				{ src: '../#{revealjsdir}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{
+					src: '../reveal.js/plugin/zoom-js/zoom.js',
+					async: true,
+					condition: function () { return !!document.body.classList; }
+				},
+				{
+					src: '../reveal.js/plugin/notes/notes.js',
+					async: true,
+					condition: function () { return !!document.body.classList; }
+				}
+				]
+			});
+			}
+			initializeReveal();
+		</script>
+	</body>
+</html>
