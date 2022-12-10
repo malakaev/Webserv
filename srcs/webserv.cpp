@@ -1,6 +1,6 @@
 #include "Parser/ConfigParser.hpp"
 #include "Parser/WrongConfigException.hpp"
-#include "Driver/Driver.hpp"
+#include "Core.hpp"
 
 int main(int argc, char* argv[]) {
 	std::string name;
@@ -18,10 +18,10 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	try {
-		Driver driver(parser.getServers());
-		driver.pollCycle();
+		Core core(parser.getServers());
+		core.pollCycle();
 	} catch (const std::exception & e) {
-		std::cerr << "DriverException: " << e.what() << std::endl;
+		std::cerr << "CoreException: " << e.what() << std::endl;
 		return 1;
 	}
 	return 0;

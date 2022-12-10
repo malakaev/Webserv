@@ -1,6 +1,6 @@
-#include "Driver.hpp"
+#include "Core.hpp"
 
-Driver::Driver(std::list<ServerData*> &Servers) {
+Core::Core(std::list<ServerData*> &Servers) {
 	signal(SIGPIPE, SIG_IGN);
 	for (std::list<ServerData*>::iterator it = Servers.begin(); it != Servers.end(); it++) {
 		int sockfd = _servSocket((*it)->getPort(), (*it)->getHost());
@@ -28,7 +28,7 @@ Driver::Driver(std::list<ServerData*> &Servers) {
 	}
 }
 
-Driver::~Driver() {
+Core::~Core() {
 	for(std::map<int, Request*>::iterator it = _request.begin(); it != _request.end(); ++it)
 		delete (*it).second;
 	for(std::map<int, Response*>::iterator it = _response.begin(); it != _response.end(); ++it)
@@ -41,7 +41,7 @@ Driver::~Driver() {
 	}
 }
 
-int	Driver::_servSocket(int port, std::string host) {
+int	Core::_servSocket(int port, std::string host) {
 	struct sockaddr_in saddr;
 	std::memset(&saddr, 0, sizeof(saddr));
 	saddr.sin_family = AF_INET;
@@ -73,7 +73,7 @@ int	Driver::_servSocket(int port, std::string host) {
 	return listenfd;
 }
 
-void Driver::_makeFds(struct pollfd *fds) {
+void Core::_makeFds(struct pollfd *fds) {
 	std::size_t i;
 	for (i = 0; i < _socket.size(); ++i) {
 		fds[i].fd = _socket[i];
@@ -91,7 +91,7 @@ void Driver::_makeFds(struct pollfd *fds) {
 	}
 }
 
-void	Driver::pollCycle() {
+void	Core::pollCycle() {
 	std::size_t nlisten = _socket.size();
 
 	while(true) {
@@ -124,7 +124,7 @@ void	Driver::pollCycle() {
 
 }
 
-void	Driver::_closeClient(struct pollfd &fd) {
+void	Core::_closeClient(struct pollfd &fd) {
 	std::cout << "Closing connection at host " << _server[fd.fd][0]->getHost()
 			<< " port " << _server[fd.fd][0]->getPort()
 			<< " with client at host " << _client[fd.fd].host
@@ -137,14 +137,14 @@ void	Driver::_closeClient(struct pollfd &fd) {
 	fd.revents = 0;
 }
 
-void	Driver::_closeRequest(int fd) {
+void	Core::_closeRequest(int fd) {
 	delete _request[fd];
 	_request.erase(fd);
 	delete _response[fd];
 	_response.erase(fd);
 }
 
-void	Driver::_addClient(struct pollfd &fd) {
+void	Core::_addClient(struct pollfd &fd) {
 	struct sockaddr_in servaddr = {};
   	socklen_t servlen = sizeof(servaddr);
   	getsockname(fd.fd, reinterpret_cast<sockaddr *>(&servaddr), &servlen);
@@ -172,7 +172,7 @@ void	Driver::_addClient(struct pollfd &fd) {
 		<< std::endl;
 }
 
-void	Driver::_readClient(struct pollfd &fd) {
+void	Core::_readClient(struct pollfd &fd) {
 	char buff[BUFF_SIZE];
 	bzero(buff, BUFF_SIZE);
 	int r = recv(fd.fd, buff, BUFF_SIZE - 1, 0);
@@ -195,7 +195,7 @@ void	Driver::_readClient(struct pollfd &fd) {
 	}
 }
 
-void	Driver::_sendResponse(struct pollfd &fd) {
+void	Core::_sendResponse(struct pollfd &fd) {
 	if (_response[fd.fd]->isComplete()) {
 		_client[fd.fd].status = READ;
 		if (_response[fd.fd]->getCode() == 400)

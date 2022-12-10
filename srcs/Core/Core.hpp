@@ -1,5 +1,4 @@
-#ifndef DRIVER_HPP
-# define DRIVER_HPP
+#pragma once
 
 #include <map>
 #include <vector>
@@ -27,18 +26,18 @@ typedef struct s_client {
 	int status;
 } t_client;
 
-class Driver {
+class Core {
 	public:
-		Driver(std::list<ServerData*> &Servers);
-		~Driver();
+		Core(std::list<ServerData*> &Servers);
+		~Core();
 		
 		void	pollCycle(void);
 
 	private:
 		//Singleton design pattern
-		Driver(void) {}
-		Driver(const Driver&); //don't implement
-		Driver& operator=(const Driver&); //don't implement
+		Core(void) {}
+		Core(const Core&); //don't implement
+		Core& operator=(const Core&); //don't implement
 	
 		int				_servSocket(int port, std::string host);
 
@@ -56,5 +55,3 @@ class Driver {
 		std::map<int, Request*>		_request;
 		std::map<int, Response*>	_response;
 };
-
-#endif
