@@ -1,5 +1,5 @@
-#ifndef PARSER_H
-# define PARSER_H
+#pragma once
+
 
 # define SERVER_NAME "webserver.ru"
 # define PATH_TO_400 "400.html"
@@ -41,5 +41,3 @@ std::vector<std::string>	ft_split(std::string const & str);
 void						checkParameter(std::string & str);
 int							convertToInt(std::string & str);
 std::string					removeSemi(std::string & str);
-
-#endif

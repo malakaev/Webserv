@@ -30,7 +30,7 @@ class Core {
 	public:
 		Core(std::list<ServerData*> &Servers);
 		~Core();
-		
+
 		void	pollCycle(void);
 
 	private:
@@ -38,20 +38,20 @@ class Core {
 		Core(void) {}
 		Core(const Core&); //don't implement
 		Core& operator=(const Core&); //don't implement
-	
+
 		int				_servSocket(int port, std::string host);
 
-		void				_makeFds(struct pollfd* fds);
-		void				_closeClient(struct pollfd &fd);
-		void				_closeRequest(int fd);
-		void				_addClient(struct pollfd &fd);
-		void				_readClient(struct pollfd &fd);
-		void				_sendResponse(struct pollfd &fd);
-	
+		void			_makeFds(struct pollfd* fds);
+		void			_closeClient(struct pollfd &fd);
+		void			_closeRequest(int fd);
+		void			_addClient(struct pollfd &fd);
+		void			_readClient(struct pollfd &fd);
+		void			_sendResponse(struct pollfd &fd);
+
 		std::vector<int>		_socket;
 		std::map<int, std::vector<ServerData*> >	_server;
 		std::map<int, t_client>		_client;
-	
+
 		std::map<int, Request*>		_request;
 		std::map<int, Response*>	_response;
 };

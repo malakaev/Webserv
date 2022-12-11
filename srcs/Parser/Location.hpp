@@ -1,5 +1,5 @@
-#ifndef LOCATION_HPP
-# define LOCATION_HPP
+#pragma once
+
 
 # include "parser.hpp"
 
@@ -54,8 +54,5 @@ public:
 	void						setPath(std::string path);
 	void						setAutoindexDir(std::string dir);
 	void						setPaths(std::vector<std::string> paths);
-	
+
 };
-
-
-#endif

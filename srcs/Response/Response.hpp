@@ -1,6 +1,4 @@
-#ifndef RESPONSE_HPP
-# define RESPONSE_HPP
-
+#pragma once
 
 #include <sstream>
 #include <ctime>
@@ -11,8 +9,8 @@
 #include "../Request/Request.hpp"
 #include "../Parser/ServerData.hpp"
 
-# include "../Parser/Location.hpp" 
-# include "../Parser/ConfigParser.hpp" 
+# include "../Parser/Location.hpp"
+# include "../Parser/ConfigParser.hpp"
 
 #define DONE	0
 #define HEADER 1
@@ -22,9 +20,9 @@ class Response {
 	public:
 		Response();
 		~Response();
-    
+
     	int   	getChunk(char* buff);
-	
+
 		void	setCode(int status);
 		int		getCode( void );
 		void	setUrl(std::string path);
@@ -32,22 +30,22 @@ class Response {
 		void	form(Request&);
 
      	bool	isComplete(void) const;
-  
+
 	private:
 		//Singleton design pattern
 		Response(const Response&); //don't implement
 		Response& operator=(const Response&); //don't implement
-		
+
 		int			_code;
   		int			_status;
 		std::string	_url;
 		std::string	_location;
 		bool		_autoindex;
 
-	
+
 		std::stringstream _header;
 		std::stringstream _body;
-	
+
 		std::string	_statusText();
 		std::string	_headerTime(void);
 		std::string	_bakeCookie(void);
@@ -79,5 +77,3 @@ class Response {
 		std::stringstream *generateAutoindex(std::string rootPath, std::string path);
 		std::string methodHandler(Request *request);
 };
-
-#endif

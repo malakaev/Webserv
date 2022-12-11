@@ -1,5 +1,5 @@
-#ifndef SERVERDATA_HPP
-# define SERVERDATA_HPP
+#pragma once
+
 
 # include "parser.hpp"
 # include "Location.hpp"
@@ -45,6 +45,3 @@ public:
 	std::list<Location *>		getLocations(void) const;
 
 };
-
-
-#endif

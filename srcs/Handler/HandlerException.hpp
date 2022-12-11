@@ -1,5 +1,5 @@
-#ifndef HANDLEREXCEPTION_HPP
-# define HANDLEREXCEPTION_HPP
+#pragma once
+
 
 # include "handler.hpp"
 
@@ -14,5 +14,3 @@ public:
 	const char	*what(void) const throw();
 	std::string	getInfo(void) throw();
 };
-
-#endif

@@ -1,5 +1,5 @@
-#ifndef WRONGCONFIGEXCEPTION_HPP
-# define WRONGCONFIGEXCEPTION_HPP
+#pragma once
+
 
 # include "parser.hpp"
 
@@ -15,5 +15,3 @@ public:
 	const char	*what(void) const throw();
 	std::string	getInfo(void) throw();
 };
-
-#endif

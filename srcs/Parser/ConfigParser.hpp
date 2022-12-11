@@ -1,5 +1,4 @@
-#ifndef CONFIGPARSER_HPP
-# define CONFIGPARSER_HPP
+#pragma once
 
 # include "parser.hpp"
 # include "ServerData.hpp"
@@ -33,5 +32,3 @@ public:
 	std::list<ServerData *>		&getServers(void) const;
 	int							getCountServers(void) const;
 };
-
-#endif

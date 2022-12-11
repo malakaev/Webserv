@@ -1,5 +1,4 @@
-#ifndef REQUEST_HPP
-# define REQUEST_HPP
+#pragma once
 
 # include "../Parser/ServerData.hpp"
 
@@ -55,7 +54,7 @@ class Request {
 		// Request(ServerData*);
 		Request(std::vector<ServerData*>);
 
-		
+
 		~Request();
 		std::string getVersion();
 		std::string getBuffer();
@@ -70,14 +69,14 @@ class Request {
 		std::string getRootPath();
 		std::map<std::string, std::string> getHeaders();
 		void		checkHeaders( void );
-		
+
 		std::string	getHeader(std::string); //ex: getHeader("Cookie");
 		std::string	getQuery();
 
 		bool	isVersionValid(); //is it HTTP/1.1; error -> 400
 		bool	isBodyLarge(); //is body bigger than the limit -> 413
 
-		void	addBuff(char*, int); 
+		void	addBuff(char*, int);
 
 		int 	parse(std::string &buf);
 
@@ -87,7 +86,5 @@ class Request {
 		int		parseChunkedBody( void );
 
 		void	setComplete(void);
-		bool	isComplete(void) const;	
+		bool	isComplete(void) const;
 };
-
-#endif

@@ -2,7 +2,8 @@
 NAME = webserv
 
 CC = clang++
-CFLAGS = -Wall -Werror -Wextra -g -std=c++98
+CFLAGS = -Wall -Werror -Wextra -MMD -std=c++98
+# CFLAGS = -Wall -Werror -Wextra -g -std=c++98
 
 MAIN = webserv
 PARSER = ConfigParser Location ServerData WrongConfigException configUtils
@@ -32,8 +33,7 @@ OBJS_BUILD = $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 
 CLASSES = -I srcs/Parser -I srcs/handler -I srcs/Core -I srcs/Request -I srcs/Response
 
-#DEP			=		$(OBJ:.o=.d)
-#DEPS		=		$(addprefix $(OBJS_DIR), $(DEP))
+DEPS	=	$(addprefix $(OBJ_DIR), $(OBJS_BUILD:.o=.d))
 
 all: $(NAME)
 
@@ -46,8 +46,6 @@ $(NAME): $(OBJS_DIR) $(OBJS_BUILD)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 				$(CC) $(CFLAGS) $(CLASSES) -c $< -o $@
 
-#$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
-#				$(CC) $(CFLAGS) $(CLASSES) -MMD -c $< -o $@
 
 $(OBJS_DIR):
 			mkdir -p $(OBJS_DIR)
@@ -65,4 +63,5 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
--include	$(DEPS)
+# -include $(addprefix $(OBJ_DIR), $(OBJS_BUILD:.o=.d))
+-include $(DEPS)
